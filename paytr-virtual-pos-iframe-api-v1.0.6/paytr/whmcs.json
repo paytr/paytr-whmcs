@@ -1,0 +1,30 @@
+{
+  "schema": "1.0",
+  "type": "whmcs-gateways",
+  "name": "paytr",
+  "license": "MIT",
+  "category": "gateway",
+  "description": {
+    "name": "PayTR Virtual Pos iFrame API",
+    "tagline": "Payment Gateway modules allow you to integrate payment solutions with the WHMCS platform.",
+    "long": "PAYTR, is a service which provides the website owners to get secured online payments from the websites in a fast and simple way with the help of PCI-DSS Level 1 Service Provider adapted technical infrastructure and experienced staff and also has the licence of the Central Bank of Turkish Republic. PayTR provides both the store’s payment security and the customer's card security with its PCI-DSS Level 1 Service Provider adapted technical infrastructure by its experienced staff.",
+    "features": [
+      "Provide both client and admin facing user interfaces",
+      "Utilize hook functionality within WHMCS"
+    ]
+  },
+  "logo": {
+    "filename": "logo.png"
+  },
+  "support": {
+    "homepage": "https://www.paytr.com/",
+    "email": "entegrasyon@paytr.com",
+    "docs_url": "https://developers.whmcs.com/payment-gateways/"
+  },
+  "authors": [
+    {
+      "name": "PayTR Ödeme ve Elektronik Para Kuruluşu A.Ş.",
+      "homepage": "https://www.paytr.com/"
+    }
+  ]
+}
