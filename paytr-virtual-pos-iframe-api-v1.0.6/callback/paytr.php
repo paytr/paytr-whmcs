@@ -31,7 +31,7 @@ $currency           = $_POST["currency"];
 $installment_count  = $_POST["installment_count"];
 $merchant_id        = $_POST["merchant_id"];
 $test_mode          = $_POST["test_mode"];
-$transactionStatus  = $status['success'] ? 'OK' : 'FAILED';
+$transactionStatus  = is_array($status) && isset($status['success']) && $status['success'] ? 'OK' : 'FAILED';
 
 /**
  * Validate callback authenticity.
