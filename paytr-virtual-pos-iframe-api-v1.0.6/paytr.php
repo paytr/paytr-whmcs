@@ -11,7 +11,7 @@ function paytr_MetaData()
 {
     return array(
         'DisplayName' => 'PayTR Virtual Pos iFrame API',
-        'APIVersion' => '1.1'
+        'APIVersion' => '1.2'
     );
 }
 
@@ -45,6 +45,17 @@ function paytr_config()
             'Size' => '20',
             'Default' => '',
             'Description' => 'Enter your <a href="https://www.paytr.com/magaza/bilgi" target="_blank">Merchant Salt</a> here',
+        ),
+        'iframe_v2' => array(
+            'FriendlyName' => 'iFrame v2',
+            'Type' => 'yesno',
+            'Description' => 'Tick to enable iFrame V2',
+            'Default' => 'on',
+        ),
+        'iframe_v2_dark' => array(
+            'FriendlyName' => 'iFrame v2 Dark Theme',
+            'Type' => 'yesno',
+            'Description' => 'Tick to enable dark theme for iFrame V2',
         ),
         'testMode' => array(
             'FriendlyName' => 'Test Mode',
@@ -86,7 +97,8 @@ function paytr_link($params)
     $postcode           = $params['clientdetails']['postcode'];
     $country            = $params['clientdetails']['country'];
     $currency           = $params['currency'] === 'TRY' ? 'TL' : $params['currency'];
-    $hash_str           = $params['merchantID'] .$ip .$merchant_oid .$params['clientdetails']['email'] .$amount .$user_basket.$no_installment.$max_installment.$currency.$params['testMode'];
+    $testmode           = $params['testMode'] ? 1 : 0;
+    $hash_str           = $params['merchantID'] .$ip .$merchant_oid .$params['clientdetails']['email'] .$amount .$user_basket.$no_installment.$max_installment.$currency.$testmode;
     $paytr_token        = base64_encode(hash_hmac('sha256',$hash_str.$params['merchantSalt'],$params['merchantKey'],true));
 
     $post_vals=array(
@@ -97,7 +109,7 @@ function paytr_link($params)
         'payment_amount'        =>  $amount,
         'paytr_token'           =>  $paytr_token,
         'user_basket'           =>  $user_basket,
-        'debug_on'              =>  0,
+        'debug_on'              =>  1,
         'no_installment'        =>  $no_installment,
         'max_installment'       =>  $max_installment,
         'user_name'             =>  $params['clientdetails']['firstname'] . ' ' . $params['clientdetails']['lastname'],
@@ -107,8 +119,10 @@ function paytr_link($params)
         'merchant_fail_url'     =>  $params['returnurl'],
         'timeout_limit'         =>  30,
         'currency'              =>  $currency,
-        'test_mode'             =>  $params['testMode'],
+        'test_mode'             =>  $testmode,
         'lang'                  =>  $params['lang'] === 'Turkish' ? 'tr' : 'en',
+        'iframe_v2'             =>  $params['iframe_v2'],
+        'iframe_v2_dark'        =>  $params['iframe_v2_dark'],
     );
 
     $ch=curl_init();
