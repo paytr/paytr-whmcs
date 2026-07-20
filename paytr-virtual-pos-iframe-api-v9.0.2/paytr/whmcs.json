@@ -1,1 +1,32 @@
-
+{
+  "schema": "1.0",
+  "type": "whmcs-gateways",
+  "name": "paytr",
+  "license": "MIT",
+  "category": "gateway",
+  "description": {
+    "name": "PayTR Virtual POS iFrame API",
+    "tagline": "Accept secure payments through the PayTR hosted iFrame experience.",
+    "long": "PayTR Virtual POS iFrame API integrates WHMCS invoices with PayTR hosted payment pages, verified server callbacks, installment payments and refunds.",
+    "features": [
+      "PayTR hosted iFrame checkout",
+      "Verified and duplicate-safe payment callbacks",
+      "Installment difference accounting",
+      "Partial and full refunds"
+    ]
+  },
+  "logo": {
+    "filename": "logo.png"
+  },
+  "support": {
+    "homepage": "https://www.paytr.com/",
+    "email": "entegrasyon@paytr.com",
+    "docs_url": "https://dev.paytr.com/iframe-api"
+  },
+  "authors": [
+    {
+      "name": "PayTR Odeme ve Elektronik Para Kurulusu A.S.",
+      "homepage": "https://www.paytr.com/"
+    }
+  ]
+}
